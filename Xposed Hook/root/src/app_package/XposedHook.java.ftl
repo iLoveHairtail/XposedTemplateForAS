@@ -112,7 +112,7 @@ public class ${hookName} extends XC_MethodHook {
     public void hook(String className,String methodRegEx){
     	Class<?> clz = null;
         try{
-            Class.forName(className);}
+            clz = Class.forName(className);}
         catch (ClassNotFoundException e){
             mylog("hook Class.forName(className) :" + e.toString());
 	    return;
