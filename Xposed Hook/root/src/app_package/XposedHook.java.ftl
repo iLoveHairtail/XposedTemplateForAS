@@ -2,7 +2,7 @@ package ${packageName};
 
 import java.lang.reflect.Member;
 import java.util.regex.Pattern;
-
+import android.util.Log;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 
@@ -81,6 +81,7 @@ public class ${hookName} extends XC_MethodHook {
         //You can add your own logger here.
         //e.g filelogger like Xlog.log(log);
         XposedBridge.log(log);
+	Log.i(logTAG, log);
     }
     private String MethodDescription(MethodHookParam param){
         StringBuilder sb=new StringBuilder();
@@ -103,7 +104,8 @@ public class ${hookName} extends XC_MethodHook {
     public void hook(Member method){
         XposedBridge.hookMethod(method, this);
     }
-    public void hook(Class clz,String methodRegEx){
+    public void hook(String className,String methodRegEx){
+    	Class<?>clz = Class.forName(className);
         Pattern pattern=Pattern.compile(methodRegEx);
         for (Member method:clz.getDeclaredMethods()) {
             if(pattern.matcher(method.getName()).matches())hook(method);
