@@ -115,6 +115,7 @@ public class ${hookName} extends XC_MethodHook {
             Class.forName(className);}
         catch (ClassNotFoundException e){
             mylog("hook Class.forName(className) :" + e.toString());
+	    return;
         }
         Pattern pattern=Pattern.compile(methodRegEx);
         for (Member method:clz.getDeclaredMethods()) {
