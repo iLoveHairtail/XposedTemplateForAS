@@ -19,6 +19,11 @@ public class ${hookName} extends XC_MethodHook {
     public Object[] args;			//方法被调用时的参数
     private Object result = null;	//方法被调用后的返回结果
     public String logTAG = " ---- ";
+    public void mylog(String log){
+        //You can add your own logger here.
+        //e.g filelogger like Xlog.log(log);
+        XposedBridge.log(log);
+        Log.i(logTAG, log);
     
 <#if hookType == "net">
 	String server="http://192.168.1.1:8000";//注意：将此处改为PC端IP与端口
