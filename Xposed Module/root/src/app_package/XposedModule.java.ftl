@@ -33,7 +33,12 @@ public class ${className} implements IXposedHookLoadPackage {
 		//Write your code here.
 		
 		
-		
+		        // 例子：对Android系统类android.app.Application的attach函数进行art模式下的Hook操作
+//        XposedHelpers.findAndHookMethod("android.app.Application",
+//                loadPackageParam.classLoader,
+//                "attach",
+//                Context.class,
+//                new YourXposedHook_class() );
     }
     private void gatherInfo(XC_LoadPackage.LoadPackageParam loadPackageParam){
         packageName=loadPackageParam.packageName;
