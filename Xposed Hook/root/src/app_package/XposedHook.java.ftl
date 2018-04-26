@@ -24,6 +24,7 @@ public class ${hookName} extends XC_MethodHook {
         //e.g filelogger like Xlog.log(log);
         XposedBridge.log(log);
         Log.i(logTAG, log);
+	}
     
 <#if hookType == "net">
 	String server="http://192.168.1.1:8000";//注意：将此处改为PC端IP与端口
