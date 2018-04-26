@@ -111,13 +111,9 @@ public class ${hookName} extends XC_MethodHook {
         XposedBridge.hookMethod(method, this);
     }
     public void hook(String className,String methodRegEx){
-    	Class<?> clz = null;
-        try{
-            clz = Class.forName(className);}
-        catch (ClassNotFoundException e){
-            mylog("hook Class.forName(className) :" + e.toString());
-	    return;
-        }
+    	Class<?> clz = XposedHelpers.findClass(className, classLoader);
+        if (clz == null) return;
+	
         Pattern pattern=Pattern.compile(methodRegEx);
         for (Member method:clz.getDeclaredMethods()) {
             if(pattern.matcher(method.getName()).matches())hook(method);
