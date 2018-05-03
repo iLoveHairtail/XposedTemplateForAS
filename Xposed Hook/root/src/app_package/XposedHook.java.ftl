@@ -110,7 +110,7 @@ public class ${hookName} extends XC_MethodHook {
     public void hook(Member method){
         XposedBridge.hookMethod(method, this);
     }
-    public void hook(String className,String methodRegEx){
+    public void hook(String className,String methodRegEx, ClassLoader classLoader){
     	Class<?> clz = XposedHelpers.findClass(className, classLoader);
         if (clz == null) return;
 	
